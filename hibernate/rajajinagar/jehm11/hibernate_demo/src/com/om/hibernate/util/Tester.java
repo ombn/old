@@ -8,11 +8,10 @@ public class Tester {
 	public static void main(String[] args) {
 
 		WeaponDTO weaponDTO = new WeaponDTO();
-		weaponDTO.setWid(1);
-		weaponDTO.setType("Long-1");
+		weaponDTO.setType("Rifle");
 		weaponDTO.setPrice(2);
 		weaponDTO.setRange(2);
-		weaponDTO.setModel("Shivrajkumar");
+		weaponDTO.setModel("MK.50");
 
 		WeaponDAO weaponDAO = new WeaponDAO();
 		weaponDAO.save(weaponDTO);

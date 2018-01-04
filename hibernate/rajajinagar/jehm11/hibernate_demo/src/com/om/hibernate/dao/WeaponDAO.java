@@ -15,13 +15,13 @@ public class WeaponDAO {
 		configuration.addAnnotatedClass(WeaponDTO.class);
 		SessionFactory factory =
 				configuration.buildSessionFactory();
-	/*	Session session = factory.openSession();
+		Session session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		session.save(weaponDTO);
 		transaction.commit();
 		session.close();
 		factory.close();
-*/
+
 	}
 
 	public WeaponDTO readById(int id) {

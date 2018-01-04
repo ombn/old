@@ -15,8 +15,9 @@ import org.hibernate.annotations.GenericGenerator;
 public class ArmyDTO implements Serializable {
 
 	@Id
-	@GenericGenerator(name="om",strategy="increment")
-	@GeneratedValue(generator="om")
+	@GenericGenerator(name = "om", 
+	strategy = "com.om.army.generator.MyGenerator")
+	@GeneratedValue(generator = "om")
 	@Column(name = "armyd_id")
 	private int aid;
 	@Column(name = "army_country_name")
@@ -70,6 +71,12 @@ public class ArmyDTO implements Serializable {
 
 	public void setBatchNo(String batchNo) {
 		this.batchNo = batchNo;
+	}
+
+	@Override
+	public String toString() {
+		return "ArmyDTO [aid=" + aid + ", countryName=" + countryName + ", type=" + type + ", noOfRec=" + noOfRec
+				+ ", batchNo=" + batchNo + "]";
 	}
 
 }

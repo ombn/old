@@ -9,7 +9,7 @@ public class ArmySaveTester {
 
 		ArmyDTO indianArmy = new ArmyDTO();
 		//indianArmy.setAid(4);
-		indianArmy.setCountryName("Russia");
+		indianArmy.setCountryName("Iraq");
 		indianArmy.setNoOfRec("2mil");
 		indianArmy.setType("Infantry");
 

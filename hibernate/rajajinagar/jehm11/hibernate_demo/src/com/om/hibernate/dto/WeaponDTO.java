@@ -4,14 +4,27 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "weapon_table")
+@NamedQueries({
+	@NamedQuery(name = "fetchALL", 
+			query = "select weapon from WeaponDTO weapon"),
+	@NamedQuery(name = "fetchAllTypeByModel", query = "select we.type from WeaponDTO we where we.model=:mod")
+	})
+
 public class WeaponDTO implements Serializable {
 
 	@Id
+	@GenericGenerator(name = "wid", strategy = "increment")
+	@GeneratedValue(generator = "wid")
 	@Column(name = "weapon_id")
 	private int wid;
 	@Column(name = "weapon_type")
