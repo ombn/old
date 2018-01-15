@@ -25,7 +25,8 @@ public class AccountDTO {
 	private Long accountNo;
 	@Column(name="acc_ifsc")
 	private String ifsc;	
-	@OneToOne(cascade=CascadeType.ALL)
+	//TODO check 
+	@OneToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
 	@PrimaryKeyJoinColumn
 	private CreditCardDTO creditCardDTO;
 

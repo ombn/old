@@ -9,7 +9,10 @@
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">password</property>
 		<property name="show_sql">true</property>
-	<mapping class="com.om.hibernate.dto.onetotone.AccountDTO"/>
-	<mapping class="com.om.hibernate.dto.onetotone.CreditCardDTO"/>			
+		<property name="hbm2ddl.auto">update</property>
+		<mapping class="com.om.hibernate.dto.onetotone.AccountDTO" />
+		<mapping class="com.om.hibernate.dto.onetotone.CreditCardDTO" />
+		<mapping class="com.om.hibernate.dto.onetomany.ComputerDTO" />
+		<mapping class="com.om.hibernate.dto.onetomany.ApplicationDTO" />
 	</session-factory>
 </hibernate-configuration>

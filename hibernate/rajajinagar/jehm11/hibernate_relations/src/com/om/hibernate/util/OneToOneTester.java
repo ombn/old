@@ -29,7 +29,9 @@ public class OneToOneTester {
 		AccountDAO accountDAO=new AccountDAO();
 		//accountDAO.save(accountDTO);
 		
-		accountDAO.fetchById(1);
+		accountDAO.updateIfscByType("Current", "CITI0004");
+		
+		//accountDAO.fetchById(1);
 		
 
 	}
