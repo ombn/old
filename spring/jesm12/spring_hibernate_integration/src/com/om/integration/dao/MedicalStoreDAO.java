@@ -15,6 +15,10 @@ public class MedicalStoreDAO {
 
 	@Autowired
 	private SessionFactory factory;
+	
+	public MedicalStoreDAO() {
+	System.out.println(this.getClass().getSimpleName()+"Created...");
+	}
 
 	// return pk
 	public Serializable save(MedicalStoreDTO dto) {
