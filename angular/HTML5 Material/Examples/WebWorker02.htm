@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Web Worker Demo</title>
+<meta charset="utf-8"/>
+<script>
+  var myworker;
+  function init()
+  {
+    if(typeof(Worker) != "undefined")
+    {
+      document.getElementById("support").innerHTML = "Great! This browser supports Web Workers";
+      myworker = new Worker("dotask.js");
+      myworker.addEventListener("message",workerMsg,true);
+      myworker.postMessage("Hello");
+      document.getElementById("divInfo").innerHTML = "Main : Hello !";
+      
+    }
+    else
+    {
+      document.getElementById("support").innerHTML = "Oops! This browser does not support Web Workers";
+    }
+  }
+
+ function workerMsg(e)
+ {
+   document.getElementById("divInfo").innerHTML += "<br/>" + e.data; 
+ }
+
+</script>
+</head>
+<body onload="init()">
+<h3>Example for Web Workers</h3>
+<div id="support"></div>
+<p></p>
+<div id="divInfo"></div>
+</body>
+</html>

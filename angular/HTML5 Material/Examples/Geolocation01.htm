@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GeoLocation Demo</title>
+<meta charset="utf-8"/>
+<script>
+  function init()
+  {
+    if(navigator.geolocation)
+    {
+      document.getElementById("support").innerHTML = "<p style='color:green'>Great! This browser supports HTML5 Geolocation</p>";
+    }
+    else
+    {
+      document.getElementById("support").innerHTML = "<p style='color:red'>Oops! This browser does not support HTML5 Geolocation</p>";
+    }
+  }
+</script>
+</head>
+<body onload="init()">
+<h3>Example for HTML5 Geolocation</h3>
+<div id="support"></div>
+</body>
+</html>

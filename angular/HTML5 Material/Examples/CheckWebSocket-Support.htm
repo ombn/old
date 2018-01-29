@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WebSocket Example</title>
+<meta charset="utf-8"/>
+<script>
+
+function init()
+{
+ if(window.WebSocket)
+ {
+   document.getElementById("divStatus").innerHTML = "HTML5 WebSocket is supported in your browser";
+ }
+ else
+ {
+   document.getElementById("divStatus").innerHTML = "Oops! HTML5 WebSocket is not supported in your browser";
+ }
+}
+
+</script>
+</head>
+<body onload="init()">
+<h3>An example to check WebSocket support</h3>
+<div id="divStatus"></div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WebSocket Example</title>
+<meta charset="utf-8"/>
+<script>
+var ws;
+function init()
+{
+ ws = new WebSocket("ws://echo.websocket.org");
+ ws.addEventListener("open",openConn,false);
+ ws.addEventListener("message",getData,false);
+}
+
+function openConn(e)
+{
+  document.getElementById("divStatus").innerHTML = "Connection opened";
+ ws.send("Hello HTML5 WebSockets!");
+}
+
+function getData(e)
+{
+ document.getElementById("divData").innerHTML = "Message from server : " + e.data; 
+
+}
+</script>
+</head>
+<body onload="init()">
+<h3>An example of WebSocket</h3>
+<div id="divStatus"></div>
+<div id="divData"></div>
+</body>
+</html>

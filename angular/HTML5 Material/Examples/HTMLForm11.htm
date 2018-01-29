@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="Simple example of HTML5 structure" keywords="HTML5,Stucture"/>
+<title>HTML5 Form Demo</title>
+<!--<link rel="stylesheet" type="text/css" href="styles.css"/>-->
+<Script>
+function myFunction()
+{
+    var inputVal = document.forms[0].elements[0]
+    if(inputVal.validity.typeMismatch)
+    {
+       inputVal.setCustomValidity("Hey '" + inputVal.value + "' is not a valid email. Please enter something that is valid!");
+    }
+    else
+        inputVal.setCustomValidity("");
+}
+</Script>
+</head>
+<body>
+<h3>HTML5 Form Example</h3>
+<h4>Custom Validation API</h4>
+<form id="form1">
+<label for="useremail">User Email : </label>
+<input type="email" id="useremail" name="useremail" placeholder="Enter email" required oninput="myFunction()"/><br/>
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>

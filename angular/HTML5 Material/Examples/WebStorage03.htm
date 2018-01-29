@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Web Storage Demo</title>
+<meta charset="utf-8"/>
+<script>
+
+  // add a storage event listener
+  //window.addEventListener("storage",displayStorageEvent,true);
+
+function displayStorageEvent(e)
+{
+   var logged = "key:" + e.key + ", newValue:" + e.newValue + ", oldValue:" + e.oldValue + ", url:" + e.url + ", storageArea:" + e.storageArea;
+
+  alert(logged);
+}
+
+ 
+
+
+  function init()
+  {
+
+    //sessionStorage
+
+    if(window.sessionStorage)
+    {
+
+      document.getElementById("support").innerHTML = "<p style='color:green'>Great! This browser supports HTML5 Session Storage</p>";
+
+       //add a storage event listener
+       window.addEventListener("storage",displayStorageEvent,true);
+
+      //write a key
+      window.sessionStorage.setItem("myName","Laks12");
+      window.localStorage.setItem("myAge",34);
+
+      //read the key value
+      document.getElementById("keyInfo").innerHTML = "The key value retrieved from sessionStorage is <b>" + window.sessionStorage.getItem("myName") + "</b>";      
+
+    }
+    else
+    {
+      document.getElementById("support").innerHTML = "<p style='color:red'>Oops! This browser does not support HTML5 Session Storage</p>";
+    }
+
+    //localStorage
+
+    if(window.localStorage)
+    {
+      document.getElementById("support").innerHTML += "<br/><p style='color:green'>Awesome! This browser supports HTML5 local Storage</p>";
+    }
+    else
+    {
+      document.getElementById("support").innerHTML += "<br/><p style='color:red'>Oh! This browser does not support HTML5 local Storage</p>";
+    }
+
+
+
+  }
+
+
+</script>
+</head>
+<body onload="init()">
+<h3>Example for HTML5 Web Storage</h3>
+<div id="support"></div>
+<div id="keyInfo"></div>
+</body>
+</html>

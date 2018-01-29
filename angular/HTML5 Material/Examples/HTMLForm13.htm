@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="Simple example of HTML5 structure" keywords="HTML5,Stucture"/>
+<title>HTML5 Form Demo</title>
+<!--<link rel="stylesheet" type="text/css" href="styles.css"/>-->
+
+</head>
+<body>
+<h3>HTML5 Form Example</h3>
+<h4>Data List</h4>
+<form id="form1">
+<label for="userpref">Search Provider : </label>
+<input type="text" id="userpref" name="userpref" placeholder="Enter your favourite search provider" required  list="search_list"/>
+<datalist id="search_list">
+   <option value="http://www.yahoo.com" label="Yahoo"/>
+   <option value="http://www.google.com" label="Google"/>
+   <option value="http://www.bing.com" label="Bing"/>
+</datalist>
+<br/><br/>
+<label for="browsers">Select installed browsers : </label>
+<input type="text" id="browsers" name="browsers" placeholder="Choose browsers installed" required list="browser_list" multiple="multiple"/>
+<datalist id="browser_list">
+   <option value="Opera" label="Opera"/>
+   <option value="IE" label="Internet Explorer"/>
+   <option value="Firefox" label="Mozilla Firefox"/>
+   <option value="Chrome" label="Google Chrome"/>
+   <option value="Safari" label="Apple Safari"/>
+</datalist>
+<br/>
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>

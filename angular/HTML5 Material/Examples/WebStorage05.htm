@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="Simple example of HTML5 structure" keywords="HTML5,Stucture"/>
+<title>HTML 5 Time and Mark</title>
+<link rel="stylesheet" type="text/css" href="styles.css"/>
+<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+<link rel="alternate" type="application/atom+xml" title="Rediff News Feeds" href="http://www.rediff.com/rss/inrss.xml"/>
+<script>
+
+var editable;
+
+function clear()
+{
+  window.localStorage.clear();
+  window.location.refresh();
+}
+
+function init()
+{
+  editable = document.getElementById("editable");
+
+ if((localStorage.getItem("contenteditable")!="undefined")||(localStorage.getItem("contenteditable")==null))
+ {
+   if(window.localStorage.contenteditable)
+    editable.innerHTML = window.localStorage.getItem("contenteditable");
+ }
+}
+
+
+function saveData()
+{
+  window.localStorage.setItem("contenteditable",editable.innerHTML);
+
+}
+
+</script>
+</head>
+<body onload="init()">
+
+Hello HTML5 World!
+<h4>ContentEditable Demo</h4>
+The event is scheduled on <time datetime="2011-03-15T16:00">
+Tue, Mar 15 2011 at <mark>4:30 PM</mark>
+</time>
+<div id="editable" contenteditable="true" onBlur="saveData()">
+This is some dummy text to start!
+</div>
+<form id="form1">
+ <!--<input type="button" id="btn1" value="Clear" onClick="clear()"/>-->
+</form>
+</body>
+</html>

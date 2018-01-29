@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Web Worker Demo</title>
+<meta charset="utf-8"/>
+<script>
+  function init()
+  {
+    if(typeof(Worker) != "undefined")
+    {
+      document.getElementById("support").innerHTML = "Great! This browser supports Web Workers";
+    }
+    else
+    {
+      document.getElementById("support").innerHTML = "Oops! This browser does not support Web Workers";
+    }
+  }
+</script>
+</head>
+<body onload="init()">
+<h3>Example for Web Workers</h3>
+<div id="support"></div>
+</body>
+</html>

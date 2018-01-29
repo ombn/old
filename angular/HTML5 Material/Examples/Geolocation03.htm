@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GeoLocation Demo</title>
+<meta charset="utf-8"/>
+<script>
+
+  var startPos;
+
+  function init()
+  {
+    if(navigator.geolocation)
+    {
+      document.getElementById("support").innerHTML = "<p style='color:green'>Great! This browser supports HTML5 Geolocation</p>";
+      //navigator.geolocation.getCurrentPosition(updateLocation,handleLocationError,{timeout:50000});
+      
+      navigator.geolocation.watchPosition(updateCurrPosition,handleLocationError);
+
+
+    }
+    else
+    {
+      document.getElementById("support").innerHTML = "<p style='color:red'>Oops! This browser does not support HTML5 Geolocation</p>";
+    }
+  }
+
+ function updateLocation(position)
+ {
+   startPos = position;
+   var latitude = position.coords.latitude;
+   var longitude = position.coords.longitude;
+ 
+   document.getElementById("startLat").innerHTML = latitude;
+   document.getElementById("startLon").innerHTML = longitude;
+
+ }
+
+ function updateCurrPosition(position)
+ {
+   document.getElementById("currentLat").innerHTML = position.coords.latitude;
+   document.getElementById("currentLon").innerHTML = position.coords.longitude;
+
+   document.getElementById("distance").innerHTML = calculateDistance(startPos.coords.latitude, startPos.coords.longitude, position.coords.latitude, position.coords.longitude);
+
+ }
+
+
+ function calculateDistance(lat1,lon1,lat2,lon2)
+ {
+   var R = 6371; //km
+   
+   var dLat = toRad((lat2-lat1));
+   var dLon = toRad((lon2-lon1));
+   
+   var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
+           Math.cos(toRad(lat1) * Math.cos(toRad(lat2))) *
+           Math.sin(dLon/2) * Math.sin(dLon/2);
+
+   var c = 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+   var d = R*c;
+   return d;
+      
+ }
+
+
+ function toRad(degValue)
+ { 
+   return degValue * Math.PI/180;
+ }
+
+ function handleLocationError(error)
+ {
+   switch(error.code)
+   {
+     case 0:
+      updateStatus("There was an error while retrieving your location: " + error.message);
+     break;
+
+     case 1:
+      updateStatus("The user prevented this page from retrieving the location.");
+      break;
+
+     case 2:
+      updateStatus("The browser was unable to determine your location: " + error.message);
+      break;
+
+     case 3:
+      updateStatus("The browser timed out before retrieving the location.");
+      break;
+   }
+ }
+
+ function updateStatus(msg)
+ {
+   document.getElementById("divStatus").innerHTML = msg;
+ }
+</script>
+</head>
+<body onload="init()">
+<h3>Example for HTML5 Geolocation</h3>
+<div id="support"></div>
+<div id="tripmeter">
+  <p>
+     Starting Location (lat,lon) : <br/>
+     <span id="startLat">???</span>,<span id="startLon">???</span>
+  </p>
+  <p>
+     Current Location (lat,lon) : <br/>
+     <span id="currentLat">???</span>,<span id="currentLon">???</span>
+  </p>
+  <p>
+     Distance from starting location:<br/.
+     <span id="distance">0</span> km.
+  </p>
+</div>
+<div id="divLongitude"></div>
+<div id="divAccuracy"></div>
+<div id="divStatus"></div>
+</body>
+</html>

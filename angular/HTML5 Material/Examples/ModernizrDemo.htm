@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8"/>
+<meta content="Simple example of Modernizr" keywords="HTML5,Modernizr"/>
+<title>Modernizr Demo</title>
+<link rel="stylesheet" type="text/css" href="styles.css"/>
+<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+<link rel="alternate" type="application/atom+xml" title="Rediff News Feeds" href="http://www.rediff.com/rss/inrss.xml"/>
+<script src="modernizr-1.6.min.js"></script>
+<script>
+ function chkFont()
+ { 
+   if(Modernizr.fontface)
+   {
+    alert("This browser supports the Font face property");
+   }
+   
+ }
+</script>
+</head>
+<body onload="chkFont()">
+<h3>Modernizr Demo</h3>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cross Origin XHR</title>
+<script>
+   var xhr;
+   //var targetlocation = "http://laksPC/CDM/getData.asp";
+   var targetlocation = "http://ipv4.0-9.fi/";
+
+ function loadDemo()
+ {
+  
+   xhr = new XMLHttpRequest();
+   if (typeof xhr.withCredentials === undefined)
+   {
+      document.getElementById("support").innerHTML = "Your browser <strong>does not</strong> support cross-origin XMLHttpRequest";
+   }
+   else
+   {
+      document.getElementById("support").innerHTML = "Your browser <strong>does</strong> support cross-origin XMLHttpRequest";
+   
+      xhr.addEventListener("progress",fnProgress,true);
+      xhr.addEventListener("load",fnLoad,true);
+      xhr.addEventListener("error",fnError,true);
+
+      //xhr.onreadystatechange = handler;
+      xhr.open("GET",targetlocation,true);
+      xhr.send();
+     
+   }
+ } 
+
+
+ function fnProgress(e)
+ {
+   var ratio = e.loaded/e.total;
+   setProgress(ratio + "% downloaded");
+ }
+
+
+ function fnLoad(e)
+ {
+   setProgress("Completed");
+   if (xhr.status == 200)
+   {
+     var response = "Your IP Address is " + xhr.responseText;
+     var textNode = document.createTextNode(response);
+     var textDiv = document.getElementById("textDiv");
+     textDiv.appendChild(textNode);
+   }
+ }
+
+ function fnError(e)
+ {
+   setProgress("Error")
+ }
+
+ function setProgress(txt)
+ {
+   document.getElementById("progress").innerHTML = txt;
+ }
+
+
+
+ function init()
+ {
+   document.getElementById("btn1").addEventListener("click",loadDemo,true);
+ }
+
+
+</script>
+
+<body onload="init()">
+
+<h3>XMLHttpRequest Level 2</h3>
+
+<p id="support"></p>
+
+<p>
+This page makes invocations to another domain using Cross-site XMLHttpRequest
+</p>
+
+<form id="frm1">
+
+ <input type="button" id="btn1" value="Click to Invoke"/>
+
+<br/><br/>
+
+</form>
+<p id="progress"></p>
+
+<div id="textDiv">
+</div>
+
+</body>
+</html>

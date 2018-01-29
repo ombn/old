@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Web Worker Demo</title>
+<meta charset="utf-8"/>
+<script>
+  var myworker;
+  function init()
+  {
+    if(typeof(Worker) != "undefined")
+    {
+      document.getElementById("support").innerHTML = "Great! This browser supports Web Workers";
+      myworker = new Worker("dotask2.js");
+      myworker.addEventListener("message",workerMsg,true);
+      
+    }
+    else
+    {
+      document.getElementById("support").innerHTML = "Oops! This browser does not support Web Workers";
+    }
+  }
+
+ function workerMsg(e)
+ {
+   document.getElementById("divInfo").innerHTML = "<br/>" + e.data; 
+ }
+
+ function btn1Click()
+ { 
+   myworker.postMessage("Start");
+ }
+
+ function btn2Click()
+ {
+   myworker.postMessage("Time");
+ }
+
+ function btn3Click()
+ {
+   myworker.terminate();
+ }
+
+</script>
+</head>
+<body onload="init()">
+<h3>Example for Web Workers</h3>
+<div id="support"></div>
+<form id"form1">
+  <input type="button" value="Start" id="btn1" onclick="btn1Click()"/>
+  <input type="button" value="Get Time" id="btn2" onclick="btn2Click()"/>
+  <input type="button" value="Stop" id="btn3" onclick="btn3Click()">
+</form>
+<p></p>
+<div id="divInfo"></div>
+</body>
+</html>

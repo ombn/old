@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="Simple example of HTML5 structure" keywords="HTML5,Stucture"/>
+<title>HTML 5 Time and Mark</title>
+<link rel="stylesheet" type="text/css" href="styles.css"/>
+<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+<link rel="alternate" type="application/atom+xml" title="Rediff News Feeds" href="http://www.rediff.com/rss/inrss.xml"/>
+<style type="text/css">
+  p:last-child
+  {
+    color:red;
+    background:yellow;
+    font-family:verdana;
+  }
+  p[align="right"]
+  {
+    color:yellow;
+    background:red;
+    font-family:courier new;
+    border-color:green;
+  }
+input:checked
+{
+  margin-left:20px;
+}
+input:enabled#txtName
+{
+  border-style:dashed;
+  border-width: 2px;
+}
+div:first-of-type
+{
+   font-style:italic;
+   font-size:14pt;
+   color:#ff0000;
+}
+
+</style>
+</head>
+<body>
+
+Hello HTML5 World!
+<h4>Time and mark demo</h4>
+The event is scheduled on <time datetime="2011-08-15T16:30">
+Mon, Aug 15 2011 at <mark>4:30 PM</mark>
+</time>
+
+<p id="first">The first paragraph containing some text</p>
+<p id="second" align="right">The second paragraph containing some text</p>
+
+<div>Hello div World!!</div>
+<div>Hello div World!!</dv>
+<form id="frm1">
+Name : <input type="text" name="txtName" id="txtName" maxlength="15" enabled="enabled"/><br/>
+Agree to <a href="#">Terms</a> : <input type="checkbox" name="chkTerms" id="chkTerms" value="agree"/><br/>
+</form>
+<p id="third">The last paragraph containing some text</p>
+</body>
+</html>

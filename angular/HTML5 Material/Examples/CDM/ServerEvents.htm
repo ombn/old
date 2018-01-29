@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Server Events Example</title>
+<meta charset="utf-8"/>
+<script>
+function init()
+{
+ var source = new EventSource("myEvents.php");
+ source.addEventListener("message",getData,false);
+}
+
+function getData(e)
+{
+ 
+ document.getElementById("divTime").innerHTML = e.data; 
+}
+</script>
+</head>
+<body onload="init()">
+<h3>An example of Server-Sent events</h3>
+<div id="divTime"></div>
+</body>
+</html>

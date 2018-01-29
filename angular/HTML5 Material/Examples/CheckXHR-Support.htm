@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Check for XHR Level 2 Support</title>
+   <meta charset="utf-8"/>
+   <script>
+
+    function checkSupport()
+    {
+     var xhr = new XMLHttpRequest();
+     if(typeof xhr.withCredentials === undefined)
+     {
+       document.getElementById("support").innerHTML = "Your browser <strong> does not</strong> support cross-origin XMLHttpRequest";
+     }
+     else
+     {
+       document.getElementById("support").innerHTML = "Your browser <strong> does</strong> support cross-origin XMLHttpRequest";
+     }
+    }
+    
+    function load()
+    {
+    var btn = document.getElementById("btn1");
+    btn.addEventListener("click",checkSupport,false);
+    }
+   </script>
+ </head>
+ <body onload="load()">
+   <h3>Check for XHR Level 2 Support</h3>
+   <div id="support"></div>
+   <br/><br/>
+   <form id="form1">
+    <input type="button" id="btn1" value="Check">
+   </form>
+ </body>

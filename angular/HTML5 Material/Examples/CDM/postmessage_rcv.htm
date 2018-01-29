@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <script>
+    window.addEventListener("message",handleMessage,true);
+    // document.addEventListener("message",handleMessage,true);
+    // need to add eventlistener for IE
+
+
+    function handleMessage(e)
+    {
+     if (e.origin !== "http://localhost")
+     {
+       return;
+     }
+
+     document.getElementById("test").textContent = e.origin + " said: " + e.data;
+
+    }
+
+  </script>
+ </head>
+<body>
+<b>This iframe is located at 127.0.0.1</b>
+<div id="test">Send me a message!</div>
