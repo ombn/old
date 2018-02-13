@@ -1,0 +1,49 @@
+package com.ria.hibernate.manytomany;
+
+import java.util.Collection;
+import java.util.HashSet;
+
+public class ManyToManyTester {
+ public static void main(String[] args) 
+ {
+	Collection<InstiStudentDTO> instiStuDTO = new HashSet<InstiStudentDTO>();
+	Collection<InstiStudentDTO> instiStuDTO1 = new HashSet<InstiStudentDTO>();
+	
+	Collection<CoursesDTO> coursesDTO = new HashSet<CoursesDTO>();
+	Collection<CoursesDTO> coursesDTO1 = new HashSet<CoursesDTO>();
+	
+	InstiStudentDTO iDTO = new InstiStudentDTO();
+	iDTO.setStdname("Ria");
+	iDTO.setStdbranch("Rajajinagar");
+	
+	InstiStudentDTO iDTO1 = new InstiStudentDTO();
+	iDTO1.setStdname("Neetu");
+	iDTO1.setStdbranch("BTM");
+	
+	instiStuDTO.add(iDTO);
+	instiStuDTO.add(iDTO1);
+	instiStuDTO1.add(iDTO);
+	
+	CoursesDTO cDTO = new CoursesDTO();
+	cDTO.setCname("Java");
+	cDTO.setCfee(8000.00);
+	cDTO.setCollection(instiStuDTO);
+	
+	CoursesDTO cDTO1 = new CoursesDTO();
+	cDTO1.setCname("Frameworks");
+	cDTO1.setCfee(7000.00);
+	cDTO.setCollection(instiStuDTO1);
+	
+	coursesDTO.add(cDTO);
+	coursesDTO.add(cDTO1);
+	coursesDTO.add(cDTO);
+	
+	iDTO.setCollection(coursesDTO1);
+	iDTO1.setCollection(coursesDTO);
+	
+	CoursesDAO dao = new CoursesDAO();
+	dao.save(iDTO);
+	dao.save(iDTO1);
+        
+	}	 
+}
